@@ -3,13 +3,15 @@ A python script that automatically renews the certificate on ZeroSSL
 
 Change following variables:
 
-	Line 19: Api Key
-	Line 20: Domain name
-	Line 43 to 52: Request paramteres (O, OU, L, ST, C)
+``` python
+        self.proxies = None
+        self.apiKey = 'your api key' #https://app.zerossl.com/developer
+        self.certificateDomain = 'your domain name'
+        self.install_loc = '/etc/nginx/ssl/'
+        self.web_root = '/var/www/html/'
+```
 
-The script assumes that certificates are stored in /etc/apache2/ssl/*.
-
-The script assumes that the www-root is stored in /var/www/domain.com/*.
+The script will download certificates to self.install_loc.
 
 OpenSSL is used to create the private key and csr.
 
@@ -18,3 +20,5 @@ There is no exception handling anywhere in the code, so things might not be stab
 Execute the script with
 
 	python3 ZeroSSL_CertRenew.py
+
+For users who cannot use acme certbot
